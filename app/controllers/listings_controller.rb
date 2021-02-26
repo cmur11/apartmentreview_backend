@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
     def index 
         listings = Listing.all 
-        render json: listings, :except => [:created_at, :updated_at]
+        render json: listings
     end 
 
     def update
@@ -10,6 +10,10 @@ class ListingsController < ApplicationController
         render json: listing
     end 
 
+    def show
+        listing = Listing.find_by(id:params['id'])
+        render json: listing
+    end
     
     def create
         listing = Listing.create(listings_params)
