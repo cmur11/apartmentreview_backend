@@ -21,6 +21,6 @@ class SavedListingsController < ApplicationController
 
     private
     def saved_listing_params
-        params.require(:SavedListing).permit(:user_id,:listing_id)
+        params.require(:saved_listing).permit(:user_id,:listing_id, :price)
     end
 end

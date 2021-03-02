@@ -5,7 +5,7 @@ class AppliedListingsController < ApplicationController
     end
 
     def create
-        applied_listing = AppliedListing.create(applied_listing_params)
+        applied_listing = AppliedListing.create(applied_listings_params)
         render json: applied_listing
     end
 
@@ -20,8 +20,8 @@ class AppliedListingsController < ApplicationController
     end
 
     private
-    def applied_listing_params
-        params.require(:AppliedListing).permit(:user_id,:listing_id)
+    def applied_listings_params
+        params.require(:applied_listing).permit(:listing_id,:user_id)
     end
 
 end
