@@ -14,16 +14,19 @@ require 'rest-client'
 # AppliedListing.destroy_all
 
 #user test create
-user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
+# user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
 
 #review test
-review1 = Review.create(user_id:user1.id, listing_id:1, comment:"working", rating:4 )
+# review1 = Review.create(user_id:user1.id, listing_id:1, comment:"working", rating:4 )
 
 #Saved Listing test
-sl1 = SavedListing.create(listing_id:1, user_id: user1.id, price: 1400)
+# sl1 = SavedListing.create(listing_id:1, user_id: user1.id, price: 1400)
+sl2 = SavedListing.create(listing_id:2, user_id: 1, price: 2000)
+sl3 = SavedListing.create(listing_id:3, user_id: 1, price: 2500)
+sl4 = SavedListing.create(listing_id:4, user_id: 1, price: 5000)
 
 #Applied Listing
-al1 = AppliedListing.create(listing_id:1, user_id: user1.id)
+# al1 = AppliedListing.create(listing_id:1, user_id: user1.id)
 
 
 #Listing Test
@@ -36,19 +39,19 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=20&offset=0")
+# url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=20&offset=0")
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+# http = Net::HTTP.new(url.host, url.port)
+# http.use_ssl = true
+# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-request = Net::HTTP::Get.new(url)
-request["x-rapidapi-key"] = 'cb43fbbba3msh5d9f3ef2655454ep1dcff1jsn4248c3a7c32e'
-request["x-rapidapi-host"] = 'realtor-com-real-estate.p.rapidapi.com'
+# request = Net::HTTP::Get.new(url)
+# request["x-rapidapi-key"] = 'cb43fbbba3msh5d9f3ef2655454ep1dcff1jsn4248c3a7c32e'
+# request["x-rapidapi-host"] = 'realtor-com-real-estate.p.rapidapi.com'
 
-response = http.request(request)
-ruby_hash = JSON.parse(response.read_body)
-puts response.read_body
+# response = http.request(request)
+# ruby_hash = JSON.parse(response.read_body)
+# puts response.read_body
 
 
 #  byebug
@@ -56,25 +59,25 @@ puts response.read_body
 #  puts "hi"
 
 
-ruby_hash['data']['results'].each do |listing|
-        new_listing = Listing.create(
-            price: listing["list_price_min"],
-            address: listing['location']['address']['line'],
-            city: listing['location']['neighborhoods'][0]['city'], # need to fix this line to do a bulk load
-            state: listing['location']['address']['state_code'],
-            zip_code: listing['location']['address']['postal_code'],
-            photos: listing['photos'].map  do |photo| photo['href'] end ,
-            bedrooms: listing['description']['beds_max'] , 
-            bathrooms: listing['description']['baths_max'],
-            sqft: listing['description']['sqft_min'],
-            days_on_market: listing["list_date"],
-            previous_price: "",
-            broker_email: "conormurnane11@gmail.com",
-            amenities: listing['tags'],
-            neighborhood: listing['location']['neighborhoods'][0]['name'] 
+# ruby_hash['data']['results'].each do |listing|
+#         new_listing = Listing.create(
+#             price: listing["list_price_min"],
+#             address: listing['location']['address']['line'],
+#             city: listing['location']['neighborhoods'][0]['city'], # need to fix this line to do a bulk load
+#             state: listing['location']['address']['state_code'],
+#             zip_code: listing['location']['address']['postal_code'],
+#             photos: listing['photos'].map  do |photo| photo['href'] end ,
+#             bedrooms: listing['description']['beds_max'] , 
+#             bathrooms: listing['description']['baths_max'],
+#             sqft: listing['description']['sqft_min'],
+#             days_on_market: listing["list_date"],
+#             previous_price: "",
+#             broker_email: "conormurnane11@gmail.com",
+#             amenities: listing['tags'],
+#             neighborhood: listing['location']['neighborhoods'][0]['name'] 
 
-        )
-    end
+#         )
+#     end
 
 
 # #user test create

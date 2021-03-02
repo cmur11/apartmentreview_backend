@@ -11,6 +11,7 @@ class SavedListingsController < ApplicationController
 
     def show
         saved_listing = SavedListing.find_by(id:params['id'])
+        render json: saved_listing
     end
 
     def destroy
