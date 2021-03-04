@@ -13,20 +13,20 @@ require 'rest-client'
 # SavedListing.destroy_all
 # AppliedListing.destroy_all
 
-#user test create
-user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
+# #user test create
+# user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
 
-#review test
-review1 = Review.create(user_id:user1.id, listing_id:1, comment:"working", rating:4 )
+# #review test
+# review1 = Review.create(user_id:user1.id, listing_id:1, comment:"working", rating:4 )
 
-#Saved Listing test
-sl1 = SavedListing.create(listing_id:1, user_id: user1.id, price: 1400)
-sl2 = SavedListing.create(listing_id:2, user_id: 1, price: 2000)
-sl3 = SavedListing.create(listing_id:3, user_id: 1, price: 2500)
-sl4 = SavedListing.create(listing_id:4, user_id: 1, price: 5000)
+# #Saved Listing test
+# sl1 = SavedListing.create(listing_id:1, user_id: user1.id, price: 1400)
+# sl2 = SavedListing.create(listing_id:2, user_id: 1, price: 2000)
+# sl3 = SavedListing.create(listing_id:3, user_id: 1, price: 2500)
+# sl4 = SavedListing.create(listing_id:4, user_id: 1, price: 5000)
 
-#Applied Listing
-al1 = AppliedListing.create(listing_id:1, user_id: user1.id)
+# #Applied Listing
+# al1 = AppliedListing.create(listing_id:1, user_id: user1.id)
 
 
 #Listing Test
@@ -39,7 +39,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=1&offset=0")
+url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Manhattan&state_code=NY&limit=10&offset=0")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
