@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_204614) do
+ActiveRecord::Schema.define(version: 2021_03_04_164748) do
 
   create_table "applied_listings", force: :cascade do |t|
     t.integer "user_id"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 2021_02_25_204614) do
     t.string "neighborhood"
     t.string "city"
     t.string "state"
+    t.boolean "applied"
+    t.boolean "saved"
+    t.float "average"
   end
 
   create_table "reviews", force: :cascade do |t|
