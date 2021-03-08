@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
 
     def update
         listing = Listing.find(params[:id])
+        # byebug
         listing.update(listings_params)
         render json: listing
     end 
