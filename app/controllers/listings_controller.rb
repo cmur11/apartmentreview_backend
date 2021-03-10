@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
 
     def update
         listing = Listing.find(params[:id])
-        # byebug
+        #  byebug
         listing.update(listings_params)
         render json: listing
     end 
@@ -29,7 +29,8 @@ class ListingsController < ApplicationController
 
         private 
     def listings_params
-        params.require(:listing).permit(:user_id, :listing_id, :comment, :rating)
+        params.require(:listing).permit(:user_id, :listing_id,:photos, :comment, :rating)
+        # :user_id, :listing_id,:comment, :rating)
         
     end 
 end
