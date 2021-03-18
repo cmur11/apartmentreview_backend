@@ -13,11 +13,13 @@
 # SavedListing.destroy_all
 # AppliedListing.destroy_all
 
-# #user test create
-# user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
+#user test create
+user1 =User.create(name: "Conor M", username:"cm11", password:"123", email:"conormurnane11@gmail.com")
+user2 =User.create(name: "George M", username:"GM123", password:"123", email:"conormurnane11@gmail.com")
 
 # #review test
 # review1 = Review.create(user_id:user1.id, listing_id:1, comment:"working", rating:4 )
+# review2 = Review.create(user_id:user2.id, listing_id:2, comment: "great spot", rating: 5)
 
 # #Saved Listing test
 # sl1 = SavedListing.create(listing_id:1, user_id: user1.id, price: 1400)
