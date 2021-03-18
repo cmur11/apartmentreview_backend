@@ -41,7 +41,7 @@ require 'uri'
 require 'net/http'
 require 'openssl'
 
-url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Manhattan&state_code=NY&limit=10&offset=0")
+url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=20&offset=0")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
