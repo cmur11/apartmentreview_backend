@@ -35,23 +35,23 @@
 
 #HTTP Test
 
-require 'uri'
-require 'net/http'
-require 'openssl'
+# require 'uri'
+# require 'net/http'
+# require 'openssl'
 
-url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=35&offset=0")
+# url = URI("https://realtor-com-real-estate.p.rapidapi.com/for-rent?city=Austin&state_code=TX&limit=35&offset=0")
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+# http = Net::HTTP.new(url.host, url.port)
+# http.use_ssl = true
+# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-request = Net::HTTP::Get.new(url)
-request["x-rapidapi-key"] = 'cb43fbbba3msh5d9f3ef2655454ep1dcff1jsn4248c3a7c32e'
-request["x-rapidapi-host"] = 'realtor-com-real-estate.p.rapidapi.com'
+# request = Net::HTTP::Get.new(url)
+# request["x-rapidapi-key"] = 'cb43fbbba3msh5d9f3ef2655454ep1dcff1jsn4248c3a7c32e'
+# request["x-rapidapi-host"] = 'realtor-com-real-estate.p.rapidapi.com'
 
-response = http.request(request)
-ruby_hash = JSON.parse(response.read_body)
-puts response.read_body
+# response = http.request(request)
+# ruby_hash = JSON.parse(response.read_body)
+# puts response.read_body
 
 
 #  byebug
@@ -86,9 +86,9 @@ puts response.read_body
 
 #review test
 # review2 = Review.create(user_id:user2.id, listing_id:2, comment:"working", rating:5 )
-review2 = Review.create(user_id:3, listing_id:2, comment:"working", rating:5 )
-review3 = Review.create(user_id:3, listing_id:3, comment:"working", rating:4 )
-review4 = Review.create(user_id:3, listing_id:4, comment:"working", rating:4 )
+# review2 = Review.create(user_id:3, listing_id:2, comment:"working", rating:5 )
+# review3 = Review.create(user_id:3, listing_id:3, comment:"working", rating:4 )
+# review4 = Review.create(user_id:3, listing_id:4, comment:"working", rating:4 )
 # review2 = Review.create(user_id:user2.id, listing_id:5, comment:"working", rating:5 )
 
 #Saved Listing test
