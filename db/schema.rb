@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_03_04_164748) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "applied_listings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "listing_id"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_164748) do
   create_table "listings", force: :cascade do |t|
     t.integer "price"
     t.integer "zip_code"
-    t.string "photos"
+    t.string "photos", array: true
     t.integer "bedrooms"
     t.integer "bathrooms"
     t.integer "sqft"
