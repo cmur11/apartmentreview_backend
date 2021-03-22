@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     def show
       render json: @current_user
     end
+
+    def login 
+    
+    
+    end
+
     def signin
         user_params = params.permit(:username, :password, :email)
     
