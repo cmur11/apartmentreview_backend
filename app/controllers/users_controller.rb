@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  
     before_action :authenticate, only: [:show]
-
+    # authenticate
  
 
     def login
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
 
     def signup
         # user_params = params.permit(:username, :password, :email)
-    
+        # user = User.create(name: params[:name],email: params[:email], password: params[:password],username: params[:username])
         user = User.create(user_params)
     
         if user.valid?
@@ -27,10 +28,10 @@ class UsersController < ApplicationController
         end
       end
 
-    #   def index 
-    #     users = User.all
-    #     render json: users
-    # end
+      def index 
+        users = User.all
+        render json: users
+      end
 
     def logout
       @current_user = nil
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:User).permit(:username,:password, :email)
+        params.permit(:name, :username,:password, :email)
     end
 
 

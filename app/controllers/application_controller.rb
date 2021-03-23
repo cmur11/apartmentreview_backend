@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::API
   
   def authenticate
-     # read the authorization header from the request
-     auth_header = request.headers["Authorization"]
+    # read the authorization header from the request
+    # byebug
+    # receiving a Not authorized error at this location
+    auth_header = request.headers["Authorization"]
      # get the token out of the header
      token = auth_header.split.last
      # decode the token using JWT

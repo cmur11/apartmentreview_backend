@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :applied_listings
   resources :saved_listings
   resources :listings
-  
+  get "/users", to: "users#index"
   post "/login", to: "users#login"
   post "/signup", to: "users#signup"
   get "/me", to: "users#show"
