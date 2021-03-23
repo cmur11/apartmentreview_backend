@@ -1,45 +1,45 @@
 class UsersController < ApplicationController
     before_action :authenticate, only: [:show]
 
-    def show
-      render json: @current_user
+ 
+
+    def login
+      # byebug
+      user = User.find_by(username: params[:username])
+      if user && user.authenticate(params[:password])
+        token = JWT.encode({ user_id: user.id }, 'my_secret', 'HS256')
+        render json: { user: UserSerializer.new(user), token: token }
+      else
+        render json: { errors: ["Invalid username or password"] }, status: :unauthorized
+      end
     end
 
-    def login 
-    
-    
-    end
-
-    def signin
-        user_params = params.permit(:username, :password, :email)
+    def signup
+        # user_params = params.permit(:username, :password, :email)
     
         user = User.create(user_params)
     
         if user.valid?
-          render json: user, status: :created
+          token = JWT.encode({user_id: user.id}, 'my_secret', 'HS256')
+          render json: { user: UserSerializer.new(user), token: token }
         else
-          render json: { error: user.errors.full_messages }, status: :unprocessable_entity
+          render json: { error: user.errors.full_messages }, status: :unauthorized
         end
       end
 
-      def index 
-        users = User.all
-        render json: users
+    #   def index 
+    #     users = User.all
+    #     render json: users
+    # end
+
+    def logout
+      @current_user = nil
+      render json: {}
     end
-
-    def new 
-        user = User.new 
-        render json: user
-    end 
-
-    def create
-        user = User.create(user_params)
-        render json: user
-    end
-
+  
 
     def show
-        user = User.find_by(id:params['id'])
+        render json: @current_user
     end
 
     def destroy
